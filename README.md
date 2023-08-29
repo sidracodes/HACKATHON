@@ -11,4 +11,6 @@ npm run build
 move sanityclient from lib to sanity>lib
 add environment variables in sanity>env.ts
 import environment variables from env in sanity>lib>sanityclient
-https://hackathon-sidrakhalid-1-sidraa-khalid.vercel.app/
+
+
+https://hackathon-sidraa-khalid.vercel.app/
