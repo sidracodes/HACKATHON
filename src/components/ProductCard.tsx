@@ -14,7 +14,7 @@ type Product ={
     name: string
     }
 }
-const ProductCard : FC<Product>= ({image,title,price,category,idc,tagline}) => {
+const ProductCard : FC<Product>= async({image,title,price,category,idc,tagline}) => {
 
   return (
     <>

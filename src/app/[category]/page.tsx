@@ -16,7 +16,16 @@ const getProductsByCategory = async (category: string) => {
   const str = category
   const res=await client.fetch(
     `
-    *[_type == "product" && category -> name == "${str}"]
+    *[_type == "product" && category -> name == "${str}"]{
+      title,
+      idc,
+      price,
+      image,
+      tagline,
+      category -> {
+        name
+      }
+    }
     `);
  
 const data: IProduct[] = res;
@@ -35,6 +44,7 @@ export default async function Page({ params }: { params: { category: string } })
     }}
     `);
     const products =await getProductsByCategory(params.category);
+   
   return (
     <>
       <div className="flex justify-evenly mt-16 py-10 flex-wrap">

@@ -1,4 +1,4 @@
-import Fetch from "@/app/Fetch";
+import SwipperSlider from "./SwipperSlider";
 
 const ProductsList = () => {
 
@@ -11,8 +11,8 @@ const ProductsList = () => {
         <h1 className="flex text-4xl font-semibold my-10 justify-center">
           Check What We Have
         </h1>
-
-          <Fetch/>
+<SwipperSlider/>
+          
       
       </section>
     </>

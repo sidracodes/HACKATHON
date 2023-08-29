@@ -3,13 +3,21 @@ import { Button } from "./ui/button";
 import toast from 'react-hot-toast';
 import { useDispatch } from "react-redux";
 import { cartActions } from "@/store/slice/cartSlice";
+import { AppDispatch } from "@/store";
 
 
-const AddToCart = () => {
-  const dispatch = useDispatch();
+const AddToCart = ({value}:any) => {
+  const dispatch : AppDispatch= useDispatch();
     const addItemsToCart = () => {
-      dispatch(cartActions.addToCart({quantity:1}))
-      toast.success("Product added successfully")
+      if(value > 0){
+        dispatch(cartActions.addToCart({quantity: value}))
+     
+      }
+      else{
+        dispatch(cartActions.addToCart({quantity:1}))
+     
+      }
+       toast.success("Product added successfully")
          
        }
   return (

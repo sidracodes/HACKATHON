@@ -4,10 +4,10 @@ import ProductsList from "@/components/ProductsList"
 import Newsletter from "@/components/Newsletter"
 import Promotions from "@/components/Promotions"
 
-
 const page = () => {
   return (
     <>
+  
    <Herosection/>
    <Promotions/>
    <ProductsList/>

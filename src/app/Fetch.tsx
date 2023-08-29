@@ -1,6 +1,7 @@
 import { client } from  "../../sanity/lib/sanityClient"
 import { Image as IImage} from "sanity";
 import ProductCard from "@/components/ProductCard";
+import { groq } from "next-sanity";
 
 export interface IProduct {
   idc: number,
@@ -10,10 +11,11 @@ export interface IProduct {
   tagline: string,
   category: {
     name: string
-    }
+    },
+ 
 }
 export const getProductsData = async() => {
-const res=await client.fetch(`
+const res=await client.fetch(groq`
 *[_type=='product']{
   title,
 idc,
@@ -22,7 +24,8 @@ image,
 tagline,
 category -> {
   name
-}}
+}
+}
 `);
 return res
 }
@@ -31,7 +34,7 @@ const Fetch = async() => {
  const data : IProduct[] = await getProductsData()
   return (
     <div className="flex gap-x-5 p-10">
-          {data.map((currentElement, currentIndex) => {
+          {data.map((currentElement:IProduct, currentIndex:number) => {
             return (
               <ProductCard
                 key={currentIndex}
@@ -41,6 +44,7 @@ const Fetch = async() => {
                 tagline={currentElement.tagline}
                 price={currentElement.price}
                 category={currentElement.category}
+                
               />
             );
           })}

@@ -1,10 +1,8 @@
 import Image from "next/image";
-import { ShoppingCart } from "lucide-react";
 import Quantity from "./Quantity";
 import { client } from  "../../../../sanity/lib/sanityClient"
 import { Image as IImage} from "sanity";
 import { urlForImage } from "../../../../sanity/lib/image";
-import AddToCart from "@/components/AddToCart";
 
 export interface IProduct {
     idc: number,
@@ -69,22 +67,12 @@ export default async function Page({ params }: { params: { id: number } }) {
                 </div>
               </div>
 
-              <div className="flex mt-10 gap-x-10">
-                <p className="font-bold">Quantity:</p>
-                <Quantity />
+              <div className=" mt-10">
+                 <Quantity price={currentElement.price}/>
+                 
               </div>
-
-              <div className="flex gap-x-4 justify-center items-center mt-16">
-                <div className="px-3 py-1 bg-gray-900 flex justify-center items-center text-white">
-                  <ShoppingCart />
-                 <AddToCart/>
                 
-                </div>
 
-                <p className="text-2xl font-semibold">
-                  ${currentElement.price.toFixed(2)}
-                </p>
-              </div>
             </div>
           </div>
         );
